@@ -1,6 +1,3 @@
-app:
-  name: electroshop  # You can change this name if needed
-
 build:
   language: python
   python_version: 3.11
@@ -11,8 +8,3 @@ build:
 
 run:
   web: gunicorn electroshop.wsgi:application
-
-env:
-  DJANGO_SECRET_KEY: 'django-insecure-ros@z9q=u0+p9)-)itjf2_a(=*_pn1cl@%umg(vjsero^qr6j7'
-  DJANGO_DEBUG: False
-  ALLOWED_HOSTS: '*'
