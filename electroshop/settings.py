@@ -72,6 +72,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'electroshop.wsgi.application'
+CSRF_TRUSTED_ORIGINS = [
+    "https://store.deploy.tz"
+]
+ASGI_APPLICATION = 'electroshop.asgi.application'
 
 
 # Database
