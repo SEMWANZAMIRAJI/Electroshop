@@ -1,0 +1,38 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h2>Your Cart</h2>
+
+{% if cart_items %}
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in cart_items %}
+    <tr>
+      <td>{{ item.product.name }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>${{ item.product.price }}</td>
+      <td>${{ item.subtotal }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h4>Total: ${{ total }}</h4>
+
+<a href="{{ whatsapp_order_link }}" class="btn btn-success mt-3" target="_blank">
+  Order via WhatsApp
+</a>
+
+{% else %}
+<p>No items in cart.</p>
+{% endif %}
+
+<a href="{% url 'product_list' %}" class="btn btn-primary mt-4">Continue Shopping</a>
+{% endblock %}
