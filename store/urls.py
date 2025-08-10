@@ -1,9 +1,11 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
-from .views import CustomLoginView, ProductCreateView, ProductListView, CartView, AddToCartView, CheckoutView, OrderSuccessView
+from .views import CustomLoginView, ProductCreateView, ProductListView, CartView, AddToCartView, CheckoutView, OrderSuccessView, Homepage
 
 urlpatterns = [
-    path('', ProductListView.as_view(), name='product_list'),
+    path('', Homepage.as_view(), name='product_list'),
+    path('product-list', ProductListView.as_view(), name='product_list'),
+    
     path('cart/', CartView.as_view(), name='cart'),
     path('add-to-cart/<int:pk>/', AddToCartView.as_view(), name='add_to_cart'),
 

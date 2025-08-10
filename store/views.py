@@ -1,19 +1,28 @@
-
+from django.views.generic import TemplateView, View
+from django.shortcuts import render, redirect
+from .models import Product
+from urllib.parse import quote_plus
 # Create your views here.
 from django.views.generic import ListView, TemplateView, View
 from django.shortcuts import render, redirect
 from .models import Product, Order
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
+from django.http import HttpResponseForbidden
+from django.views.generic.edit import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class ProductListView(ListView):
     model = Product
     template_name = 'store/product_list.html'
     context_object_name = 'products'
+    reverse_lazy = 'product_list'
 
-from django.views.generic import TemplateView, View
-from django.shortcuts import render, redirect
-from .models import Product
-from urllib.parse import quote_plus
 
+class Homepage(ListView):
+    model = Product
+    template_name = 'store/home.html'
+    context_object_name = 'products'
 class AddToCartView(View):
     def post(self, request, pk):
         cart = request.session.get('cart', {})
@@ -92,8 +101,6 @@ class OrderSuccessView(TemplateView):
 
 
 
-from django.contrib.auth.views import LoginView
-from django.urls import reverse_lazy
 
 class CustomLoginView(LoginView):
     template_name = 'store/login.html'
@@ -103,9 +110,6 @@ class CustomLoginView(LoginView):
             return reverse_lazy('product_create')
         return reverse_lazy('product_list')
 
-from django.views.generic.edit import CreateView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseForbidden
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
