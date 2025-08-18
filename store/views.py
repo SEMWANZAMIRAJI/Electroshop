@@ -10,8 +10,7 @@ from django.http import HttpResponseForbidden
 from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 import os
-import pandas as pd
-from django.conf import settings
+
 
 class ProductListView(ListView):
     model = Product
