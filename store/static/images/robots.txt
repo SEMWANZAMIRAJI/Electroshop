@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://store.deploy.tz/sitemap.xml
