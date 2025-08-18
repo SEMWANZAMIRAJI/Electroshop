@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ros@z9q=u0+p9)-)itjf2_a(=*_pn1cl@%umg(vjsero^qr6j7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
+DEBUG = False
+ALLOWED_HOSTS = ['store.deploy.tz']
+# ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = ['MIRAJI.pythonanywhere.com']
 
 
@@ -125,8 +125,7 @@ USE_TZ = True
 
 
 
-
-# STATICFILES_DIRS = [BASE_DIR / 'static',]
+STATICFILES_DIRS = [BASE_DIR / 'store' / 'static']
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -134,7 +133,7 @@ LOGIN_REDIRECT_URL = 'product-list'
 LOGOUT_REDIRECT_URL = 'login'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
-
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
