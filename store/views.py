@@ -122,7 +122,7 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
             return HttpResponseForbidden("Only seller 'nuhu' can create products.")
         return super().dispatch(request, *args, **kwargs)
 
-# class DealsView(ListView):
+
     template_name = "store/deals.html"
     context_object_name = "products"
     paginate_by = 12
