@@ -15,7 +15,7 @@ urlpatterns = [
     path('login/', CustomLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(next_page='product_list'), name='logout'),
     path('create-product/', ProductCreateView.as_view(), name='product_create'),
-    # path('deals/', DealsView.as_view(), name='deals'),
+    
 ]
 
 
