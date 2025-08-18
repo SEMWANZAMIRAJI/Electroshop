@@ -4,18 +4,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from django.contrib.sitemaps.views import sitemap
-from store.sitemaps import StaticViewSitemap  # replace 'store' with your app name if different
+ # replace 'store' with your app name if different
 
 
-sitemaps = {
-    'static': StaticViewSitemap,
-}
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('store.urls')),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+
 ]
 
 if settings.DEBUG:
