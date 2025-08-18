@@ -16,7 +16,7 @@
       <div class="card-body">
         <h5>{{ product.name }}</h5>
         <p>{{ product.description }}</p>
-        <p><strong>${{ product.price }}</strong></p>
+        <p><strong>TZS/={{ product.price }}</strong></p>
         <form method="post" action="{% url 'add_to_cart' product.pk %}">
           {% csrf_token %}
           <button type="submit" class="btn btn-primary">Add to Cart</button>
@@ -25,6 +25,27 @@
     </div>
   </div>
   {% endfor %}
+   <div class="d-flex justify-content-center">
+    {% if is_paginated %}
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+          </li>
+        {% endif %}
+
+        <li class="page-item active">
+          <span class="page-link">{{ page_obj.number }}</span>
+        </li>
+
+        {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+          </li>
+        {% endif %}
+      </ul>
+    {% endif %}
+  </div>
 </div>
 
 <a href="{% url 'cart' %}" class="btn btn-warning mt-4">Go to Cart</a>

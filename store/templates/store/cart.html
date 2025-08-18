@@ -17,14 +17,14 @@
     <tr>
       <td>{{ item.product.name }}</td>
       <td>{{ item.quantity }}</td>
-      <td>${{ item.product.price }}</td>
-      <td>${{ item.subtotal }}</td>
+      <td>TZS/={{ item.product.price }}</td>
+      <td>TZS/={{ item.subtotal }}</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
 
-<h4>Total: ${{ total }}</h4>
+<h4>Total: TZS/={{ total }}</h4>
 
 <a href="{{ whatsapp_order_link }}" class="btn btn-success mt-3" target="_blank">
   Order via WhatsApp
